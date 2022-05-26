@@ -76,7 +76,8 @@
           <th class="w100">Nombre</th>
           <th class="w100">Tags</th>
           <th class="w100">Status</th>
-          <th class="w100">Accion</th>
+          <th class="w100">Editar</th>
+          <th class="w100">Comprar</th>
         </tr>
       </thead>
       <tbody>
@@ -94,6 +95,10 @@
           <td>
             <a (click)="editar(item.id,index)" data-toggle="tooltip"
                                         data-original-title="Editar"> <i class="ti-pencil"></i> </a>
+          </td>
+          <td>
+            <a (click)="comprar(item.id,index)" data-toggle="tooltip"
+                                        data-original-title="Comprar"> <i class="ti-shopping-cart"></i> </a>
           </td>
         </tr>
 
@@ -146,6 +151,45 @@
                       (click)="cerrarModal()">Close</button>
                   <button type="button" (click)="editarMascota()"
                       class="btn btn-success waves-effect waves-light">Editar</button>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Modal compra mascotas -->
+
+<div class="fondo-modal-imagen animated fadeIn fast" [class.oculto]="mostraModal1">
+  <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      style="display: block;padding-right: 17px; overflow-y: initial">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Comprar mascota</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                      (click)="cerrarModal1()">×</button>
+              </div>
+
+              <div class="card-body">
+                  
+                  
+                  <div class="form-group">
+                      <label for="exampleInputuname">Cantidad</label>
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="ti-user"></i></div>
+                          <input type="number"  #quantity>
+                      </div>
+                  </div>
+
+
+              </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal"
+                      (click)="cerrarModal1()">Close</button>
+                  <button type="button" (click)="guardarCompra()"
+                      class="btn btn-success waves-effect waves-light">Guardar</button>
 
               </div>
 

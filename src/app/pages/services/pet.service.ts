@@ -21,4 +21,8 @@ export class PetService {
   updatePet( pet:any){
     return this.http.put(`${base_url}/pet`, pet);
   }
+
+  comprarPet(orden:any){
+    return this.http.post(`${base_url}/store/order`, orden);
+  }
 }
