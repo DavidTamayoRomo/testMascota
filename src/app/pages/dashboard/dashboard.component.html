@@ -1,0 +1,155 @@
+<div class="row">
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Inventario</h4>
+        <div class="table-responsive">
+          <table class="table full-color-table full-inverse-table hover-table">
+            <thead>
+              <tr>
+                <th class="w100">Item</th>
+                <th class="w100">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of arrayValores">
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>CREAR MASCOTA</h2>
+  <form (ngSubmit)="crear()" autocomplete="off" [formGroup]="registerForm">
+
+    <div class="card-body">
+      <div class="form-group">
+        <div class="demo-switch-title">Categoria</div>
+        <select class="form-control custom-select" formControlName="category">
+          <option value="Canina">Canina</option>
+          <option value="Felina">Felina</option>
+        </select>
+        <small class="form-control-feedback"> Seleccione una categoria </small>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputuname">Nombre *</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user"></i></div>
+          <input type="text" class="form-control" placeholder="name" formControlName="name">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputuname">Tags</label>
+        <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [settings]="dropdownSettings"
+          [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Guardar</button>
+        <a (click)="cancelarGuardado()" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+      </div>
+
+    </div>
+  </form>
+
+</div>
+<div class="card">
+  <h2>LISTA MASCOTA</h2>
+  <div class="table-responsive">
+    <table class="table full-color-table full-inverse-table hover-table">
+      <thead>
+        <tr>
+          <th class="w100">Categoria</th>
+          <th class="w100">Nombre</th>
+          <th class="w100">Tags</th>
+          <th class="w100">Status</th>
+          <th class="w100">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let item of petCreados; let index=index">
+          <td>
+            {{item.category.name}}
+          </td>
+          <td>{{item.name}}</td>
+          <td>
+            <div *ngFor="let tag of item?.tags">
+              {{tag.name}}
+            </div>
+          </td>
+          <td>{{item.status}}</td>
+          <td>
+            <a (click)="editar(item.id,index)" data-toggle="tooltip"
+                                        data-original-title="Editar"> <i class="ti-pencil"></i> </a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+
+
+<!-- Modal editar mascotas -->
+
+<div class="fondo-modal-imagen animated fadeIn fast" [class.oculto]="mostraModal">
+  <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      style="display: block;padding-right: 17px; overflow-y: initial">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Editar mascota</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                      (click)="cerrarModal()">×</button>
+              </div>
+
+              <div class="card-body">
+                  
+                  
+                  <div class="form-group">
+                      <label for="exampleInputuname">Nombre y apellido</label>
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="ti-user"></i></div>
+                          <input type="text"  #nombre>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="exampleInputuname">Edad</label>
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="ti-user"></i></div>
+                          <input type="text" #estado>
+                      </div>
+                  </div>
+
+
+              </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal"
+                      (click)="cerrarModal()">Close</button>
+                  <button type="button" (click)="editarMascota()"
+                      class="btn btn-success waves-effect waves-light">Editar</button>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

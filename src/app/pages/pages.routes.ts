@@ -1,0 +1,19 @@
+import { Routes, RouterModule } from '@angular/router';
+
+import { PagesComponent } from './pages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CrearComponent } from './mascota/crear/crear.component';
+
+
+const pagesRoutes: Routes = [
+    {
+        path: '',
+        component: PagesComponent,
+        children: [
+          { path: 'dashboard', component: DashboardComponent },
+         
+          { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+        ]
+      }
+];
+export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );
