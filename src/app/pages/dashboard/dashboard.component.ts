@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PetService } from '../services/pet.service';
 //import Swal from 'sweetalert2';
-const Swal = require('sweetalert2');
+//const Swal = require('sweetalert2');
 
 @Component({
   selector: 'app-dashboard',
@@ -138,11 +138,13 @@ export class DashboardComponent implements OnInit {
     this.petService.comprarPet(objeto).subscribe((resp: any) => {
       console.log(resp);
       this.cerrarModal1();
-      Swal.fire(
+      /* Swal.fire(
         'Genial!',
         'Su compra se realizo correctamente!',
         'success'
-      )
+      ) */
     });
   }
 }
+
+

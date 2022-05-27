@@ -2,7 +2,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CrearComponent } from './mascota/crear/crear.component';
 
 
 const pagesRoutes: Routes = [
