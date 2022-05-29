@@ -1,27 +1,157 @@
-# Adminpro
+# API pet store
+## _Documentacion para consumo de la API_
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.2.
 
-## Development server
+En el siguiente documento se detalla el paso a paso de como crear y actualizar los datos de una mascota de una tienda online teniendo en cuenta que tiene una API denominada  [PETSTORE](https://petstore.swagger.io/#/pet/updatePet).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- EndPoints existentes
+- Paso a paso para crear una mascota
+- Paso a paso para actualizar una mascota
 
-## Code scaffolding
+## Rutas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+La ruta del servicio de la tienda de mascotas es : https://petstore.swagger.io/v2
+A continuación se muestran los endPoints para ser consumidos
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+| Tipo | Descripción |Ruta |
+| ------ | ------ |------ |
+| GET | Obtener mascota por ID | ```/pet/{petId}``` |
+| POST |Crear nueva mascota |```/pet``` |
+| PUT | Actualizar mascota |```/pet``` |
+| DELETE | Eliminar mascota por ID |```/pet/{petId}``` |
 
-## Running unit tests
+## Crear Mascota
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+Diagrama de secuencia para la creación de una mascota
 
-## Running end-to-end tests
+Es necesario conocer los request que deben ser enviados al servicio para crear el registro
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+| Request | Tipo |
+| ------ | ------ |
+| id(required) | ```integer($int64)``` |
+| category | ```object: {id: integer($int64),name: string}```|
+| name(required) | ``` string ``` |
+| photoUrls | ``` Array<string> ```|
+| tags | ``` Array< object: {id:integer($int64),name:string}>```|
+| status | ``` enum <string> (available|pending|sold) ``` |
 
-## Further help
+Ejemplo:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+```{    
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
+```
+
+- Ruta a utilizar de tipo GET  https://petstore.swagger.io/v2/pet
+- Código de respuesta:
+    - 405 = Invalid input
+    - 200 = OK
+
+
+#### Consumo de la API con postman
+1. EndPoint para creación de mascota
+![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+2. Request que se debe enviar
+
+
+### Implementación consumo desde angular
+Código github: https://github.com/DavidTamayoRomo/testMascota.git
+1. Crear un servicio el cual contenga el endPoint que se va a utilizar y enviar el modelo establecido anteriormente.
+```
+const base_url = 'https://petstore.swagger.io/v2';
+createPet(pet:Pet){
+    return this.http.post(`${base_url}/pet`, pet);
+}
+```
+2. Consumir el servicio con los datos del formulario
+```
+crearPet() {
+    this.petService.createPet(this.registerForm.value).subscribe();
+}
+```
+3. Respuesta
+imagen 
+
+### Ejemplos de código
+- Código Javascrip
+```
+var request = require("request");
+var options = {
+        method: 'POST',
+        url: 'https://petstore.swagger.io/v2/pet', //  Ruta para crear
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: {
+          {    
+            "id": 0,
+            "category": {
+              "id": 0,
+              "name": "string"
+            },
+            "name": "doggie",
+            "photoUrls": [
+              "string"
+            ],
+            "tags": [
+              {
+                "id": 0,
+                "name": "string"
+              }
+            ],
+            "status": "available"
+          }          
+        }
+      }
+      request(options, function(error, response, body) {
+            if (error) throw new Error(error);
+            console.log(body);
+      });
+
+```
+
+- Código Python
+```
+import requests
+url = "https://petstore.swagger.io/v2/pet"
+payload = "{   \"id\": 0, \"category\": { \"id\": 0,\"name\": \"string\"},\"name\": \"doggie\",\"photoUrls\": [\"string\"],\"tags\": [{\"id\": 0,\"name\": \"string\"}], \"status\": \"available\"} }"
+headers = { 'content-type': 'application/json' }
+response = requests.request("POST", url, data = payload, headers = headers)
+print(response.text)
+```
+
+- Código PHP
+```
+$client = new http\Client;
+$request = new http\Client\Request;
+$body = new http\Message\Body;
+$body->append('{   \"id\": 0, \"category\": { \"id\": 0,\"name\": \"string\"},\"name\": \"doggie\",\"photoUrls\": [\"string\"],\"tags\": [{\"id\": 0,\"name\": \"string\"}], \"status\": \"available\"} }');
+ 
+$request->setRequestUrl('https://petstore.swagger.io/v2/pet');
+$request->setRequestMethod('POST');
+$request->setBody($body);
+$request->setHeaders(array(
+  'content-type' => 'application/json'
+));
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+echo $response->getBody();
+```
