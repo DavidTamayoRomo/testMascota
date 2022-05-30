@@ -35,7 +35,7 @@ Es necesario conocer los request que deben ser enviados al servicio para crear e
 | name(required) | ``` string ``` |
 | photoUrls | ``` Array<string> ```|
 | tags | ``` Array< object: {id:integer($int64),name:string}>```|
-| status | ``` enum <string> (available|pending|sold) ``` |
+| status | ```enum <string> (available|pending|sold)``` |
 
 Ejemplo:
 
@@ -74,7 +74,9 @@ Código de respuesta:
 1. EndPoint para creación de mascota
 
 ![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/postmancrear1.png)
+
 2. Request que se debe enviar
+
 ![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/postmancrear.png)
 
 ### Implementación consumo desde angular
@@ -162,10 +164,14 @@ echo $response->getBody();
 ```
 
 
-#Actualizar Mascota
+# Actualizar Mascota
+
 ![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/actualizarsecuencia.png)
+
 Diagrama de secuencia para la actualización de una mascota
+
 Ruta a utilizar de tipo PUT  https://petstore.swagger.io/v2/pet
+
 Body es requerido, es importante saber que en el require Id se debe enviar el id de la mascota a actualizar con los nuevos datos.
 Código de respuesta:
 
@@ -177,9 +183,13 @@ Código de respuesta:
 | 405 | Validation exception|
 
 #### Consumo de la API con postman
+
 1. EndPoint para actualizar mascota
+
 ![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/actualizarpost.png)
+
 2. Request que se debe enviar
+
 ![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/actualizarpost2.png)
 
 
