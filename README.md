@@ -24,6 +24,8 @@ A continuación se muestran los endPoints para ser consumidos
 ## Crear Mascota
 
 ![Imagen] (\secuencia1.png)
+![avatar](http://baidu.com/pic/doge.png)
+
 Diagrama de secuencia para la creación de una mascota
 
 Es necesario conocer los request que deben ser enviados al servicio para crear el registro
