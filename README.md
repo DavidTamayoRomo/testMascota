@@ -24,7 +24,7 @@ A continuación se muestran los endPoints para ser consumidos
 ## Crear Mascota
 
 ![Imagen] (\secuencia1.png)
-![avatar](http://baidu.com/pic/doge.png)
+![avatar](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/secuencia1.png)
 
 Diagrama de secuencia para la creación de una mascota
 
