@@ -61,9 +61,13 @@ Ejemplo:
 ```
 
 - Ruta a utilizar de tipo GET  https://petstore.swagger.io/v2/pet
-- Código de respuesta:
-    - 405 = Invalid input
-    - 200 = OK
+
+Código de respuesta:
+| Codigo | Respuesta |
+| ------ | ------ |
+| 200 | OK |
+| 405 | Invalid input|
+
 
 
 #### Consumo de la API con postman
@@ -147,6 +151,93 @@ $body->append('{   \"id\": 0, \"category\": { \"id\": 0,\"name\": \"string\"},\"
  
 $request->setRequestUrl('https://petstore.swagger.io/v2/pet');
 $request->setRequestMethod('POST');
+$request->setBody($body);
+$request->setHeaders(array(
+  'content-type' => 'application/json'
+));
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+echo $response->getBody();
+```
+
+
+#Actualizar Mascota
+![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+Diagrama de secuencia para la actualización de una mascota
+Ruta a utilizar de tipo PUT  https://petstore.swagger.io/v2/pet
+Body es requerido, es importante saber que en el require Id se debe enviar el id de la mascota a actualizar con los nuevos datos.
+Código de respuesta:
+
+| Codigo | Respuesta |
+| ------ | ------ |
+| 200 | OK |
+| 400 | Invalid ID supplied|
+| 404 | Pet not found |
+| 405 | Validation exception|
+
+#### Consumo de la API con postman
+1. EndPoint para actualizar mascota
+![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+2. Request que se debe enviar
+
+
+### Ejemplos de código
+- Código Javascrip
+```
+var request = require("request");
+var options = {
+        method: 'PUT',
+        url: 'https://petstore.swagger.io/v2/pet', //  Ruta para actualizar
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: {
+          {    
+            "id": 9223372036854027105,
+            "category": {
+              "id": 0,
+              "name": "string"
+            },
+            "name": "Datos para actualizar",
+            "photoUrls": [
+              "string"
+            ],
+            "tags": [
+              {
+                "id": 0,
+                "name": "string"
+              }
+            ],
+            "status": "available"
+          }          
+        }
+      }
+      request(options, function(error, response, body) {
+            if (error) throw new Error(error);
+            console.log(body);
+      });
+
+```
+
+- Código Python
+```
+import requests
+url = "https://petstore.swagger.io/v2/pet"
+payload = "{   \"id\": 9223372036854027105, \"category\": { \"id\": 0,\"name\": \"string\"},\"name\": \"doggie\",\"photoUrls\": [\"string\"],\"tags\": [{\"id\": 0,\"name\": \"string\"}], \"status\": \"available\"} }"
+headers = { 'content-type': 'application/json' }
+response = requests.request("PUT", url, data = payload, headers = headers)
+print(response.text)
+```
+
+- Código PHP
+```
+$client = new http\Client;
+$request = new http\Client\Request;
+$body = new http\Message\Body;
+$body->append('{   \"id\": 9223372036854027105, \"category\": { \"id\": 0,\"name\": \"string\"},\"name\": \"doggie\",\"photoUrls\": [\"string\"],\"tags\": [{\"id\": 0,\"name\": \"string\"}], \"status\": \"available\"} }');
+ 
+$request->setRequestUrl('https://petstore.swagger.io/v2/pet');
+$request->setRequestMethod('PUT');
 $request->setBody($body);
 $request->setHeaders(array(
   'content-type' => 'application/json'
