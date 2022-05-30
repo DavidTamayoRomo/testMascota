@@ -35,7 +35,7 @@ Es necesario conocer los request que deben ser enviados al servicio para crear e
 | name(required) | ``` string ``` |
 | photoUrls | ``` Array<string> ```|
 | tags | ``` Array< object: {id:integer($int64),name:string}>```|
-| status | enum <string> (available|pending|sold) |
+| status | ```enum<string>(available|pending|sold)``` |
 
 Ejemplo:
 
