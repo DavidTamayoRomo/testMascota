@@ -22,9 +22,7 @@ A continuación se muestran los endPoints para ser consumidos
 | DELETE | Eliminar mascota por ID |```/pet/{petId}``` |
 
 ## Crear Mascota
-
-![Imagen] (\secuencia1.png)
-![avatar](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/secuencia1.png)
+![Secuencia](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/secuencia1.png)
 
 Diagrama de secuencia para la creación de una mascota
 
@@ -74,9 +72,9 @@ Código de respuesta:
 
 #### Consumo de la API con postman
 1. EndPoint para creación de mascota
-![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+![Imagen] (https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/postmancrear1.png)
 2. Request que se debe enviar
-
+![Imagen] (https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/postmancrear.png)
 
 ### Implementación consumo desde angular
 Código github: https://github.com/DavidTamayoRomo/testMascota.git
@@ -94,7 +92,7 @@ crearPet() {
 }
 ```
 3. Respuesta
-imagen 
+![Imagen] (https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/respuesta1.png)
 
 ### Ejemplos de código
 - Código Javascrip
@@ -164,7 +162,7 @@ echo $response->getBody();
 
 
 #Actualizar Mascota
-![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+![Imagen] (https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/actualizarsecuencia.png)
 Diagrama de secuencia para la actualización de una mascota
 Ruta a utilizar de tipo PUT  https://petstore.swagger.io/v2/pet
 Body es requerido, es importante saber que en el require Id se debe enviar el id de la mascota a actualizar con los nuevos datos.
@@ -179,8 +177,9 @@ Código de respuesta:
 
 #### Consumo de la API con postman
 1. EndPoint para actualizar mascota
-![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+![Imagen] (https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/actualizarpost.png)
 2. Request que se debe enviar
+![Imagen] (https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/actualizarpost2.png)
 
 
 ### Ejemplos de código
