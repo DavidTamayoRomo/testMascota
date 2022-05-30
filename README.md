@@ -23,7 +23,7 @@ A continuación se muestran los endPoints para ser consumidos
 
 ## Crear Mascota
 
-![Imagen] (https://es.web.img3.acsta.net/r_654_368/newsv7/17/10/11/15/05/4820298.jpg)
+![Imagen] (secuencia1.png)
 Diagrama de secuencia para la creación de una mascota
 
 Es necesario conocer los request que deben ser enviados al servicio para crear el registro
