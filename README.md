@@ -79,24 +79,6 @@ Código de respuesta:
 
 ![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/postmancrear.png)
 
-### Implementación consumo desde angular
-Código github: https://github.com/DavidTamayoRomo/testMascota.git
-1. Crear un servicio el cual contenga el endPoint que se va a utilizar y enviar el modelo establecido anteriormente.
-```
-const base_url = 'https://petstore.swagger.io/v2';
-createPet(pet:Pet){
-    return this.http.post(`${base_url}/pet`, pet);
-}
-```
-2. Consumir el servicio con los datos del formulario
-```
-crearPet() {
-    this.petService.createPet(this.registerForm.value).subscribe();
-}
-```
-3. Respuesta
-![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/respuesta1.png)
-
 ### Ejemplos de código
 - Código Javascrip
 ```
@@ -162,6 +144,26 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 echo $response->getBody();
 ```
+
+### Implementación consumo desde angular
+Código github: https://github.com/DavidTamayoRomo/testMascota.git
+1. Crear un servicio el cual contenga el endPoint que se va a utilizar y enviar el modelo establecido anteriormente.
+```
+const base_url = 'https://petstore.swagger.io/v2';
+createPet(pet:Pet){
+    return this.http.post(`${base_url}/pet`, pet);
+}
+```
+2. Consumir el servicio con los datos del formulario
+```
+crearPet() {
+    this.petService.createPet(this.registerForm.value).subscribe();
+}
+```
+3. Respuesta
+![Imagen](https://desarrollo.cooperativabanos.com.ec/wp-content/uploads/2022/05/respuesta1.png)
+
+
 
 
 # Actualizar Mascota
